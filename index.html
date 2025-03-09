@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stephanie Akakabota | Mechanical Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Color scheme and fonts */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-color: #1f2937;
+            --light-bg: #f3f4f6;
+            --white: #ffffff;
+            --light-accent: #dbeafe;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        nav {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            display: block;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+            background-color: var(--light-accent);
+        }
+        
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--light-accent);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-category {
+            background-color: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-right: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--light-accent);
+        }
+        
+        .profile-pic {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-icons a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-icons a:hover {
+            color: var(--light-accent);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--accent-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--white);
+            border: 4px solid var(--accent-color);
+            border-radius: 50%;
+            top: 15px;
+            right: -10px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        .code-sample {
+            background-color: #f0f4f8;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+            
+            .skills-container,
+            .project-container {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav a {
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <img src="https://via.placeholder.com/150" alt="Stephanie Akakabota" class="profile-pic">
+            <h1>Stephanie Akakabota</h1>
+            <p>Mechanical Engineer | Robotics Enthusiast | NCAA Athlete</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about" class="active">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I'm a Mechanical Engineering student at UC Berkeley with a passion for robotics, mechatronics, and innovative design. My experience spans from building automated systems to researching bio-inspired robotics, all while competing as a Division I swimmer for the Cal Women's Swim Team.</p>
+            
+            <p>As a hands-on engineer, I thrive in bringing concepts from ideation to implementation. I've worked on projects ranging from automated cheese graters to robotic dish clearers, using a combination of mechanical design principles, programming skills, and electrical integration.</p>
+            
+            <p>My goal is to create technology that makes a positive impact, particularly in the areas of robotics and prosthetics. When I'm not engineering or swimming, you might find me playing piano, hiking, or working on crochet projects.</p>
+            
+            <a href="#contact" class="btn">Get in Touch</a>
+            <a href="#projects" class="btn btn-outline">See My Work</a>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="project-container">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Dish-n-Dash: Robotic Dish Clearer</h3>
+                        <p>An automated dish-sorting robot for school cafeterias using inverse kinematics and computer vision (DETR model), achieving 85% classification accuracy.</p>
+                        <a href="https://sakakabota.github.io/DishnDash/index.html" class="btn" target="_blank">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Smart Cheese Grater</h3>
+                        <p>An automated cheese grater featuring a DC motor-driven transmission system with optimized torque control and ESP32-based state machine architecture.</p>
+                        <a href="#" class="btn btn-outline">In Progress</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>IoT Cat Laser Toy</h3>
+                        <p>An IoT-enabled interactive pet toy with 360-degree stepper motor rotation and servo-controlled laser movement, controllable via a mobile app.</p>
+                        <a href="#" class="btn btn-outline">In Progress</a>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Acoustic Analysis of Piano Soundboards</h3>
+                        <p>Investigated the impact of lid material on the harmonic characteristics of piano soundboards using experimental analysis and frequency response testing.</p>
+                        <a href="#" class="btn">View Report</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Code Sample Section -->
+            <h3 style="margin-top: 2rem;">Code Sample: Robot Vision System</h3>
+            <p>Extract from the Dish-n-Dash project's computer vision and object classification system:</p>
+            <div class="code-sample">
+                <pre><code>
+def process_frame(frame):
+    """
+    Process camera frame for object detection and classification.
+    
+    Args:
+        frame: Current camera frame from RealSense camera
+        
+    Returns:
+        detected_objects: List of objects with their classes and positions
+    """
+    # Preprocess frame for DETR model
+    preprocessed = preprocess_for_detr(frame)
+    
+    # Run detection model
+    with torch.no_grad():
+        predictions = model(preprocessed)
+    
+    # Postprocess results
+    detected_objects = []
+    for score, label, box in zip(predictions['scores'], predictions['labels'], predictions['boxes']):
+        if score > DETECTION_THRESHOLD:
+            # Convert box to robot coordinates
+            robot_coordinates = camera_to_robot_transform(box)
+            
+            # Classify as food or utensil
+            category = 'food' if label in FOOD_LABELS else 'utensil'
+            
+            detected_objects.append({
+                'label': LABEL_MAP[label],
+                'category': category,
+                'position': robot_coordinates,
+                'confidence': score.item()
+            })
+    
+    return detected_objects
+                </code></pre>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming & Software</h3>
+                    <ul>
+                        <li>Python (including ROS, OpenCV)</li>
+                        <li>MATLAB</li>
+                        <li>Arduino</li>
+                        <li>MicroPython</li>
+                        <li>C/C++</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Robotics & Mechatronics</h3>
+                    <ul>
+                        <li>Moteus motors</li>
+                        <li>PID Control</li>
+                        <li>DC/Stepper/Servo motor control</li>
+                        <li>Inverse Kinematics</li>
+                        <li>Path Planning</li>
+                        <li>PCB Design</li>
+                        <li>Circuit Debugging</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>CAD & Fabrication</h3>
+                    <ul>
+                        <li>SolidWorks</li>
+                        <li>LabVIEW</li>
+                        <li>Machine Shop (lathe, mill, drill press, CNC)</li>
+                        <li>3D printing</li>
+                        <li>Soldering</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Research Assistant</h3>
+                        <p><strong>Embodied Dexterity Group, UC Berkeley</strong><br>May 2024 - Present</p>
+                        <ul>
+                            <li>Engineered and executed bio-inspired robotic systems using Moteus motors and LabVIEW software</li>
+                            <li>Engineered precise tail movements for a biomimetic fish robot, replicating natural locomotion including C-start maneuvers</li>
+                            <li>Created and optimized Arduino-based control systems for robotic actuation</li>
+                            <li>Partnered on hardware integration to enhance mechanical performance and dynamic response</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Women's Swim Team (NCAA Division I)</h3>
+                        <p><strong>University of California, Berkeley</strong><br>August 2021 - Present</p>
+                        <ul>
+                            <li>Balanced a 20+ hour weekly training schedule with rigorous academics</li>
+                            <li>2024 Pac-12 Champion and NCAA Qualifier</li>
+                            <li>Developed teamwork, time management, and dedication through high-level athletic competition</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Intro to Robotics: Final Project</h3>
+                        <p><strong>UC Berkeley</strong><br>Fall 2024</p>
+                        <ul>
+                            <li>Engineered and implemented an automated dish-sorting robot for school cafeterias</li>
+                            <li>Utilized inverse kinematics and computer vision (DETR model) for object recognition</li>
+                            <li>Developed motion control systems for precise robotic arm grasping and object sorting</li>
+                            <li>Achieved 85% classification accuracy in real-world testing environments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            <h3>University of California, Berkeley</h3>
+            <p>B.S. in Mechanical Engineering<br>
+            Expected August 2025<br>
+            GPA: 3.59/4.00</p>
+            
+            <h3>Relevant Coursework</h3>
+            <ul>
+                <li>Introduction to Robotics (MECENG C106A)</li>
+                <li>Experimentation and Measurements (MECENG 103)</li>
+                <li>Dynamic Systems and Feedback (MECENG 132)</li>
+                <li>Fluid Mechanics (MECENG 106)</li>
+                <li>Heat Transfer (MECENG 109)</li>
+                <li>Mechanical Behavior of Engineering Materials (MECENG 108)</li>
+                <li>Thermodynamics (MECENG 40)</li>
+            </ul>
+            
+            <h3>Honors & Awards</h3>
+            <ul>
+                <li>National Merit Finalist</li>
+                <li>Pac-12 Honor Roll</li>
+                <li>2020 Int'l Piano Champion</li>
+                <li>2021 Olympic Trials Qualifier</li>
+            </ul>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p>I'm always open to discussing new projects, ideas, or opportunities to collaborate on innovative engineering solutions.</p>
+            
+            <div class="contact-icons">
+                <a href="mailto:sakakabota@berkeley.edu" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/stephanie-akakabota-26806b124" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sakakabota" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+            
+            <p style="margin-top: 1.5rem;">
+                <strong>Email:</strong> sakakabota@berkeley.edu<br>
+                <strong>Phone:</strong> (407) 456-2907
+            </p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Stephanie Akakabota. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 60,
+                    behavior: 'smooth'
+                });
+                
+                // Update active link
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Update active navigation link on scroll
+        window.addEventListener('scroll', () => {
+            let currentSection = '';
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
