@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Cheese Grater Progress | Stephanie Akakabota</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables */
+        :root {
+            --primary-color: #4285f4;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --border-color: #e9ecef;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        .project-description {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .progress-section {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .progress-section h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+        }
+
+        .progress-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .progress-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .progress-list li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        /* Images */
+        .design-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .design-image {
+            flex: 1;
+            min-width: 250px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .design-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .image-caption {
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            background-color: var(--light-bg);
+        }
+
+        /* Links */
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .design-images {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Smart Cheese Grater Project</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="project-description">
+                <h2>Project Overview</h2>
+                <p>The Smart Cheese Grater is an automated cheese grating mechanism featuring a DC motor-driven transmission system with optimized torque control and ESP32-based state machine architecture. The system is designed to make the grating process more efficient by automating the way cheese is pressed into the grater.</p>
+                
+                <p>Our design uses a lead screw mechanism, where a threaded aluminum cylinder moves up and down on a rotating lead screw to apply controlled force. The system is designed so that the lead screw spins, but the cylinder doesn't, allowing it to translate vertically and push the cheese into the grater.</p>
+            </div>
+
+            <div class="progress-section">
+                <h3>Current Progress</h3>
+                <ul class="progress-list">
+                    <li>Completed the mechanical design for the lead screw mechanism that provides controlled pressure application</li>
+                    <li>Calculated the theoretical forces required for grating different cheese hardnesses</li>
+                    <li>Selected appropriate motor specifications based on torque requirements and gearing ratios</li>
+                    <li>Designed housing components that are food-safe and easily cleanable</li>
+                    <li>Currently implementing the ESP32-based state machine architecture for multiple grating modes</li>
+                </ul>
+            </div>
+
+            <div class="design-images">
+                <div class="design-image">
+                    <img src="housing1.png" alt="Housing Design - Part 1">
+                    <div class="image-caption">Lead Screw Housing Design - Part 1</div>
+                </div>
+                <div class="design-image">
+                    <img src="housing2.png" alt="Housing Design - Part 2">
+                    <div class="image-caption">Lead Screw Housing Design - Part 2</div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h3>Force Calculations</h3>
+                <p>One of our biggest challenges has been balancing force and speed—we need enough pressure to push hard cheeses like Parmesan through the grater without requiring an oversized motor. To solve this, we've researched the shear force required to break down different cheese types.</p>
+                <p>We've created detailed force calculations to determine the optimal lead screw pitch and motor torque for our design. These calculations consider:</p>
+                <ul class="progress-list">
+                    <li>Shear strength of various cheese types (from soft to hard)</li>
+                    <li>Mechanical efficiency of the lead screw system</li>
+                    <li>Friction factors for aluminum-on-aluminum contact</li>
+                    <li>Motor power requirements and thermal considerations</li>
+                </ul>
+                <p>You can view our detailed force calculations document here: <a href="https://www.overleaf.com/project/67ba3ae136dc38d47be21ae1" target="_blank" style="color: var(--primary-color);">Force Calculations Document</a></p>
+            </div>
+
+            <div class="progress-section">
+                <h3>Next Steps</h3>
+                <ul class="progress-list">
+                    <li>Complete the ESP32 firmware implementation for the state machine</li>
+                    <li>Assemble the mechanical components and conduct initial testing</li>
+                    <li>Optimize the motor control parameters based on real-world performance</li>
+                    <li>Design and implement a user interface for selecting grating modes</li>
+                </ul>
+            </div>
+
+            <a href="index.html" class="back-link">← Back to Portfolio</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Stephanie Akakabota. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
