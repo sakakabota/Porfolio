@@ -1,0 +1,45 @@
+/* ===========================================
+Brand Variables – Stephanie Akakabota
+=========================================== */
+:root {
+--accent: #98A786;                 /* primary brand */
+--accent-copper: #BC6C25;
+--accent-olive: #5F7E3A;
+
+--text-dark: #312F30;              /* dark text color */
+--text-dark-rgb: 49, 47, 48;
+
+--text-body: #202020;
+--bg-light: #f3f3f3;
+--bg-lighter: #e7e7e7;
+}
+body { background-color: var(--accent-olive);
+}
+.btn,
+.btn-large {
+	background-color: var(--accent);
+}
+
+.btn:hover,
+.btn-large:hover {
+	background-color: var(--accent-copper);
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=date]:focus,
+textarea:focus {
+	border-bottom: 1px solid var(--accent);
+    -webkit-box-shadow: 0 1px 0 0 var(--accent);
+    -moz-box-shadow: 0 1px 0 0 var(--accent);
+    box-shadow: 0 1px 0 0 var(--accent);
+}
+
+.hero_fullscreen.background_solid {
+	background-color: var(--accent-olive);
+}
+
+a {
+	color:var(--accent-olive);
+}
