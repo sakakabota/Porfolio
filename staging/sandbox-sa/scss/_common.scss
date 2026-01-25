@@ -1,0 +1,504 @@
+/* -------------------------------------------
+
+main
+
+------------------------------------------- */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: $soft;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $accent;
+}
+
+.container-full {
+    width: 100%;
+}
+
+/* -------------------------------------------
+
+typography
+
+------------------------------------------- */
+body {
+    font-family: $font-1;
+    font-size: 18px;
+    line-height: 170%;
+    color: $dark;
+    background-color: $light;
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+
+    &:after {
+        content: '';
+        position: fixed;
+        pointer-events: none;
+        z-index: 999999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-image: url(../img/bg.png);
+        opacity: .06;
+    }
+}
+
+p {
+    color: $gray;
+}
+
+h1 {
+    line-height: 100%;
+    font-size: 80px;
+    text-shadow: 5px 5px 0px $soft;
+
+    @media screen and (max-width: 992px) {
+        font-size: 40px;
+    }
+}
+
+h2 {
+    line-height: 100%;
+    font-size: 58px;
+    text-shadow: 5px 5px 0px $soft;
+
+    @media screen and (max-width: 1400px) {
+        font-size: 48px;
+    }
+
+    @media screen and (max-width: 992px) {
+        font-size: 32px;
+    }
+}
+
+h3 {
+    line-height: 100%;
+    font-size: 40px;
+    text-shadow: 5px 5px 0px $soft;
+
+    @media screen and (max-width: 1400px) {
+        font-size: 30px;
+    }
+
+    @media screen and (max-width: 992px) {
+        font-size: 22px;
+    }
+}
+
+h4 {
+    line-height: 100%;
+    font-size: 22px;
+}
+
+.mil-text-sm {
+    font-size: 14px !important;
+}
+
+.mil-text-lg {
+    font-size: 18px !important;
+}
+
+.mil-text-xl {
+    font-size: 20px !important;
+}
+
+.mil-up {
+    text-transform: uppercase;
+}
+
+.mil-text-right {
+    text-align: right;
+}
+
+.mil-text-right-adapt {
+    text-align: right;
+
+    @media screen and (max-width: 1200px) {
+        text-align: left;
+    }
+}
+
+.mil-text-center {
+    text-align: center;
+}
+
+.mil-text-center-adapt {
+    text-align: center;
+
+    @media screen and (max-width: 1200px) {
+        text-align: left;
+    }
+}
+
+.mil-upper {
+    font-size: 16px;
+    line-height: 100%;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: $dark;
+    i {
+        margin-right: 10px;
+        font-size: 28px;
+        display: inline;
+        vertical-align: middle;
+    }
+
+    &.mil-upper-sm {
+        font-size: 14px;
+    }
+}
+
+.mil-accent {
+    color: $accent;
+}
+
+.mil-dark {
+    color: $dark;
+}
+
+.mil-left-offset {
+    padding-left: 60px;
+
+    @media screen and (max-width: 1200px) {
+        padding: 0;
+    }
+}
+
+.mil-left-offset-xsm {
+    padding-left: 15px;
+
+    @media screen and (max-width: 1200px) {
+        padding: 0;
+    }
+}
+
+.mil-left-offset-sm {
+    padding-left: 30px;
+
+    @media screen and (max-width: 1200px) {
+        padding: 0;
+    }
+}
+
+.mil-left-offset-md {
+    padding-left: 120px;
+
+    @media screen and (max-width: 1200px) {
+        padding: 0;
+    }
+}
+
+.mil-left-offset-lg {
+    padding-left: 260px;
+
+    @media screen and (max-width: 992px) {
+        padding: 0;
+    }
+}
+
+.mil-flex {
+    display: flex;
+}
+
+.mil-text-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mil-icon-row {
+    display: flex;
+    align-items: center;
+}
+
+.mil-text-list {
+    & li {
+        list-style-type: none;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 10px;
+        color: $gray;
+
+        &:before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: $accent;
+            margin-right: 15px;
+        }
+    }
+}
+
+blockquote {
+    font-style: italic;
+    color: $gray;
+    display: flex;
+    align-items: flex-start;
+
+    &:before {
+        content: '"';
+        display: block;
+        transform: translateY(7px);
+        margin-right: 30px;
+        font-size: 36px;
+        font-weight: 600;
+        color: $accent;
+    }
+}
+
+label.error {
+    color: red;
+    font-size: 14px;
+    position: relative;
+    top: -15px;
+    line-height: 0;
+}
+
+label label.error {
+    top: 5px;
+}
+
+/* -------------------------------------------
+
+button
+
+------------------------------------------- */
+.mil-buttons-frame {
+    display: flex;
+
+    & .mil-button {
+        margin-right: 15px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        justify-content: center
+    }
+
+    @media screen and (max-width: 992px) {
+        flex-direction: column;
+
+        & .mil-button {
+            margin-right: 0;
+            margin-bottom: 15px;
+
+            &:last-child {
+                margin-right: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.mil-button {
+    white-space: nowrap;
+    width: auto;
+    display: inline-flex;
+    background-color: $accent;
+    height: 60px;
+    padding: 0 40px;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    border: solid 2px $accent;
+    color: $light;
+    box-shadow: 7px 7px 0px 0px $accent-light;
+    transition: $tr;
+    cursor: pointer;
+
+    &.mil-type-2 {
+        border-color: $dark;
+        background-color: $light;
+        color: $dark;
+        box-shadow: 7px 7px 0px 0px $soft;
+
+        &:hover {
+            box-shadow: 0px 0px 0px 0px $soft;
+        }
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 0px 0px $accent-light;
+    }
+}
+
+/* -------------------------------------------
+
+fields
+
+------------------------------------------- */
+label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+input {
+    height: 60px;
+    width: 100%;
+    border: none;
+    background-color: #f3f3f3;
+    padding: 0 30px;
+    font-family: $font-1;
+    font-size: 16px;
+    color: $dark;
+
+    &:focus {
+        outline: inherit;
+    }
+}
+
+textarea {
+    padding: 15px 30px;
+    height: 120px;
+    width: 100%;
+    border: none;
+    background-color: #f3f3f3;
+    font-family: $font-1;
+    font-size: 16px;
+    color: $dark;
+    resize: none;
+
+    &:focus {
+        outline: inherit;
+    }
+}
+
+.mil-checkbox {
+    padding-left: 40px;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 0;
+    
+    & a {
+        color: $accent;
+    }
+}
+
+.mil-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.mil-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #f3f3f3;
+}
+
+.mil-checkbox input:checked ~ .mil-checkmark {
+    background-color: $accent;
+}
+
+.mil-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.mil-checkbox input:checked ~ .mil-checkmark:after {
+    display: block;
+}
+
+.mil-checkbox .mil-checkmark:after {
+    left: 10px;
+    top: 6px;
+    width: 5px;
+    height: 10px;
+    border: solid $light;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(1.2);
+}
+
+/* -------------------------------------------
+
+spaces
+
+------------------------------------------- */
+.mil-mb-10 {
+    margin-bottom: 10px;
+}
+
+.mil-mb-15 {
+    margin-bottom: 15px;
+}
+
+.mil-mb-20 {
+    margin-bottom: 20px;
+}
+
+.mil-mb-30 {
+    margin-bottom: 30px;
+}
+
+.mil-mb-40 {
+    margin-bottom: 40px;
+}
+
+.mil-mb-45 {
+    margin-bottom: 45px;
+}
+
+.mil-mb-60 {
+    margin-bottom: 60px;
+}
+
+.mil-mb-90 {
+    margin-bottom: 90px;
+}
+
+.mil-op-space-90 {
+    padding-top: 30px;
+
+    @media screen and (max-width: 1200px) {
+        padding-top: 0;
+        padding-bottom: 90px;
+    }
+}
+
+.mil-op-space-60 {
+    padding-top: 30px;
+
+    @media screen and (max-width: 1200px) {
+        padding-top: 0;
+        padding-bottom: 60px;
+    }
+}
+
+.mil-op-space-30 {
+    padding-top: 60px;
+
+    @media screen and (max-width: 1200px) {
+        padding-top: 0;
+        padding-bottom: 30px;
+    }
+}
