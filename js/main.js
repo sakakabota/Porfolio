@@ -1,118 +1,222 @@
-(function($) {
-var App = { init: function() { App.HomepageHeight();
-                               App.HomepageOpacity();
-							   App.MaxImage_Video();
-							   App.MaxImage_Slider();
-							   App.MaxImage_Single();
-							   App.ScrollToSomeplace();
-							   App.Count_Down();
-							   App.FormValidation();
-							   App.ContactForm();},
+/* -------------------------------------------
 
+Name: Treto
+Version: 1.0
+Developer: MillerDigitalDesign
+Author:	bslthemes (https://bslthemes.com)
 
-	// Homepage Height
-	HomepageHeight: function() {
-	"use strict"; 
-	    var h = window.innerHeight;
-	    $('.hero_fullscreen').css('height', h );
-	    $('.mockup').css('height', h );
-	},
-	
-	
-	// Homepage Opacity - for single background image version
-	HomepageOpacity: function() {
-    "use strict"; 
-        var h = window.innerHeight;
-        $(window).on('scroll', function() {
-            var st = $(this).scrollTop();
-            $('#maximage_single').css('opacity', (1-st/h) );
+------------------------------------------- */
+
+$(function () {
+
+    "use strict";
+
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 30) {
+            $(".mil-top-panel").addClass("mil-active");
+        } else {
+            $(".mil-top-panel").removeClass("mil-active");
+        }
+    });
+
+    var swiper = new Swiper('.mil-timeline-slider', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        speed: 800,
+        parallax: true,
+        navigation: {
+            prevEl: '.mil-timeline-prev',
+            nextEl: '.mil-timeline-next',
+        },
+        pagination: {
+            el: '.mil-timeline-pagination',
+            type: 'fraction',
+            clickable: true,
+        },
+        breakpoints: {
+            992: {
+                slidesPerView: 2,
+            },
+        },
+    });
+
+    var swiper = new Swiper('.mil-timeline-slider-2', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        speed: 800,
+        parallax: true,
+        navigation: {
+            prevEl: '.mil-timeline-2-prev',
+            nextEl: '.mil-timeline-2-next',
+        },
+        pagination: {
+            el: '.mil-timeline-2-pagination',
+            type: 'fraction',
+            clickable: true,
+        },
+        breakpoints: {
+            992: {
+                slidesPerView: 3,
+            },
+        },
+    });
+
+    var swiper = new Swiper('.mil-reviews-slider', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        speed: 800,
+        parallax: true,
+        navigation: {
+            prevEl: '.mil-reviews-prev',
+            nextEl: '.mil-reviews-next',
+        },
+        pagination: {
+            el: '.mil-reviews-pagination',
+            type: 'fraction',
+            clickable: true,
+        },
+    });
+
+    $('.mil-menu-btn').on('click', function () {
+        $('.mil-menu-btn , .mil-top-panel nav').toggleClass('mil-active');
+    });
+
+    $('.mil-filter a').on('click', function () {
+        $('.mil-filter .mil-current').removeClass('mil-current');
+        $(this).addClass('mil-current');
+
+        var selector = $(this).data('filter');
+        $('.mil-portfolio-grid').isotope({
+            filter: selector
         });
-    },
+        return false;
+
+    });
+
+    var $container = $('.mil-portfolio-grid').isotope({
+        itemSelector: '.mil-grid-item',
+        transitionDuration: '0.5s',
+        masonry: {
+            columnWidth: '.grid-sizer'
+        }
+    });
+
+    /**
+		Image Popup
+	**/
+	$('.mfp-image').magnificPopup();
+
+    /*
+		Gallery popup
+	*/
+	$('.mfp-gallery').on('click', function() {
+		var gallery = $(this).attr('href');
+
+		$(gallery).magnificPopup({
+			delegate: 'a',
+			type:'image',
+			closeOnContentClick: false,
+			mainClass: 'mfp-fade',
+			removalDelay: 160,
+			fixedContentPos: false,
+			gallery: {
+				enabled: true
+			}
+		}).magnificPopup('open');
+
+		return false;
+	});
+
+    /**
+		Validate Form
+	**/
+	if($('.cform').length) {
+		$('#cform').validate({
+			rules: {
+				name: {
+					required: true
+				},
+				tel: {
+					required: true
+				},
+				email: {
+					required: true,
+					email: true
+				},
+                subject: {
+					required: true
+				},
+				message: {
+					required: true
+				},
+                checkmark: {
+					required: true
+				}
+			},
+			success: 'valid',
+			submitHandler: function() {
+				$.ajax({
+					url: 'mailer/feedback.php',
+					type: 'post',
+					dataType: 'json',
+					data: 'name='+ $("#cform").find('input[name="name"]').val() + '&email='+ $("#cform").find('input[name="email"]').val() + '&tel='+ $("#cform").find('input[name="tel"]').val() + '&subject='+ $("#cform").find('input[name="subject"]').val() + '&message='+ $("#cform").find('textarea[name="message"]').val(),
+					beforeSend: function() {
 	
+					},
+					complete: function() {
 	
-	// MaxImage Fullscreen Background Slider
-	MaxImage_Video: function() {
-	"use strict";
-	    jQuery('video, object').maximage('maxcover');
-	    
-	    // detecting if browser is mobile and disabling the video background, leaving only poster as bg.
-		if( navigator.userAgent.match(/Android/i)
-		|| navigator.userAgent.match(/webOS/i)
-		|| navigator.userAgent.match(/iPhone/i)
-		|| navigator.userAgent.match(/iPad/i)
-		|| navigator.userAgent.match(/iPod/i)
-		|| navigator.userAgent.match(/BlackBerry/i)
-		|| navigator.userAgent.match(/Windows Phone/i)
-		 ){
-		    $('#maximage_video video').css('display', 'none' );
-		    classie.add( document.getElementById( 'maximage_video' ), 'mobile_novideo' );
-		  };
-	},
-	
-	
-	// MaxImage Fullscreen Background Slider
-	MaxImage_Slider: function() {
-	"use strict"; 
-	    $('#maximage_slider').maximage();
-	},
-	
-	
-	// MaxImage Fullscreen Background Slider
-	MaxImage_Single: function() {
-	"use strict";
-	    $('#maximage_single').maximage();
-	},
-	
-	
-	// Scroll To ...
-    ScrollToSomeplace: function() {
-    $('#more_info_btn').click(function () {$.scrollTo('#more_info',1000,{easing:'easeInOutExpo','axis':'y'});return false});
-    },
-    
-    
-    // Counter ... 
-	Count_Down: function() {
-    "use strict"; 
-        $("#countdown").countdown({
-		date: "30 January 2026 12:00:00 GMT-0700", // Change this to your desired date to countdown to
-		format: "on"
+					},
+					success: function(data) {
+						$('#cform').fadeOut();
+						$('.alert-success').delay(1000).fadeIn();
+					}
+				});
+			}
 		});
-    },
-    
-    
-	// Newsletter Form Validation
-    FormValidation: function() {
-	    function isValidEmailAddress(emailAddress) {
-	    var pattern = new RegExp(/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);
-	    return pattern.test(emailAddress);
-		};
-    
-	    $('#subscribe-form').isHappy({
-	    submitButton: '#subscribe-form-submit',
-	    fields: {
-	      '#email': {
-	        required: true,
-	        message: 'Please enter a valid e-mail address!',
-	        test: isValidEmailAddress
-	      }
-	    }
+	}
+
+    /**
+		Validate Form 2
+	**/
+	if($('.cform-two').length) {
+		$('#cform-two').validate({
+			rules: {
+				name: {
+					required: true
+				},
+				email: {
+					required: true,
+					email: true
+				},
+				message: {
+					required: true
+				},
+                checkmark: {
+					required: true
+				}
+			},
+			success: 'valid',
+			submitHandler: function() {
+				$.ajax({
+					url: 'mailer/feedback-two.php',
+					type: 'post',
+					dataType: 'json',
+					data: 'name='+ $("#cform-two").find('input[name="name"]').val() + '&email='+ $("#cform-two").find('input[name="email"]').val() + '&message='+ $("#cform-two").find('textarea[name="message"]').val(),
+					beforeSend: function() {
+	
+					},
+					complete: function() {
+	
+					},
+					success: function(data) {
+						$('#cform-two').fadeOut();
+						$('.alert-success').delay(1000).fadeIn();
+					}
+				});
+			}
 		});
-    },
-    
-    
-    // Contact Form
-    ContactForm: function() {
-	     "use strict";
-	    var options = {target: "#alert"}
-	    $("#contact-form").ajaxForm(options);
-    },
+	}
 
-}
-
-
-$(function() {
-  App.init();
-  $(window).resize(App.HomepageHeight);  
 });
-
-})(jQuery);
