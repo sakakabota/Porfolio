@@ -1,0 +1,45 @@
+filelist.txt
+project_shoulder-overload
+project_shoulder-overload.html
+project_smart-cheese-grater
+project_smart-cheese-grater.html
+project_sprout-up
+project_sprout-up.html
+project_whisker-twister
+project_whisker-twister.html
+
+./project_shoulder-overload:
+BIOE105FinalPaper.pdf
+BIOE105FinalPaperCover.png
+sEMGcircuitdesign.png
+
+./project_smart-cheese-grater:
+ME_102B_Final_Project_page1.png
+ME_102B_Final_Project_page2.png
+ME_102B_Final_Project_page3.png
+ME_102B_Final_Project_page4.png
+ME_102B_Final_Project_page5.png
+ME_102B_Final_Project_page6.png
+ME_102B_Final_Project_page7.png
+ME_102B_Final_Project.pdf
+ME_102B_Final_ProjectCover.png
+project_scg_01.png
+
+./project_sprout-up:
+FinalSproutUPPrez.pdf
+IMG_7610.HEIC
+IMG_7611.HEIC
+IMG_7614.HEIC
+IMG_7625.heic
+IMG_7633.HEIC
+IMG_7643 2.mov
+IMG_7643.mov
+InitialPrez.pptx
+SproutUpCover.png
+SproutUpFinalPaper.pdf
+Untitled.png
+
+./project_whisker-twister:
+Copy of Code info.docx
+Project Presentation ME100.pptx
+whisker-twister_cover.png
