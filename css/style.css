@@ -80,6 +80,7 @@ Brand Variables – Stephanie Akakabota
 
 --text-body: #202020;
 --bg-light: #f3f3f3;
+--bg-light-rgb: 243, 243, 243;
 --bg-lighter: #e7e7e7;
 }
 
@@ -726,15 +727,19 @@ opacity: 1;
 border-color: var(--accent-copper);
 background: rgb(255, 255, 255);
 }
-.mil-pagination .mil-dot:before {
+.mil-pagination .mil-dot:before {  
+background: rgba(var(--bg-light-rgb), 1);
+border-radius: 20px;
 content: attr(data-name);
 display: block;
-padding-right: 20px;
+padding: 5px 10px;
+margin-right: 20px;
 position: absolute;
 left: -100px;
-width: 100px;
+width: auto;
+min-width: 100px;
 opacity: 0;
-text-align: right;
+text-align: left;
 font-size: 14px;
 line-height: 100%;
 text-transform: uppercase;
@@ -2297,6 +2302,79 @@ padding-bottom: 65%;
 }
 .mil-project-img.mil-long {
 padding-bottom: calc(130% + 30px);
+}
+/* --- Portfolio placeholder tile (replaces an image) --- */
+.mil-project-img .mil-color-tile {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 16px;
+  border: 2px solid var(--accent);
+    --dot-size: 2px;
+  --dot-space: 10px;
+background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.9) calc(var(--dot-space) - var(--dot-size)),
+      transparent 1%
+    ) center / var(--dot-space) var(--dot-space),
+    linear-gradient(
+      rgba(255, 255, 255, 0.9) calc(var(--dot-space) - var(--dot-size)),
+      transparent 1%
+    ) center / var(--dot-space) var(--dot-space),
+    var(--accent-olive);
+}
+/* Optional “offset frame” look to match theme */
+.mil-project-img .mil-color-tile::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  right: -12px;
+  bottom: -12px;
+  border: 2px solid var(--accent-olive);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Label inside the tile */
+.mil-project-img .mil-color-tile .mil-tile-label {
+  position: relative; /* stay above ::after */
+  z-index: 2;
+  background: rgba(var(--text-dark-rgb), 0.75);
+  color: #fff;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+/* Make the whole tile clickable without changing layout */
+.mil-project-img .mil-color-tile-link {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  text-indent: -9999px; /* accessible name via aria-label */
+}
+.mil-project-label {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(var(--text-dark-rgb), 0.65);
+  color: #fff;
+  padding: 3px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  z-index: 2;
+  pointer-events: none;
+  line-height: 1;
 }
 
 /* -------------------------------------------
