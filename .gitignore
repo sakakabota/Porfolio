@@ -51,12 +51,6 @@ build/
 *.local.*
 
 # --------------------
-# GitHub Pages / static site gotchas
-# --------------------
-# Uncomment if CNAME is generated locally and should not be committed
-# CNAME
-
-# --------------------
 # Misc
 # --------------------
 Thumbs.db
